@@ -6,11 +6,43 @@
 }
 
 
-    <div class="text-center">
-        <h1>@Model.Player x @Model.Computer</h1>
-        <p>@Model.Round</p>
-        <p>@Model.Wins</p>
-    </div>
+@if (Model.Player == Choice.Paper)
+{
+    <img src="~/paper.svg" width="100" height="100" />
+}
+@if (Model.Player == Choice.Rock)
+{
+    <img src="~/rock.svg" width="100" height="100" />
+}
+@if (Model.Player == Choice.Scissors)
+{
+    <img src="~/scissors.svg" width="100" height="100" />
+}
+@if (Model.Computer == Choice.Paper)
+{
+    <img src="~/paper.svg" width="100" height="100" id="svg"/>
+}
+@if (Model.Computer == Choice.Rock)
+{
+    <img src="~/rock.svg" width="100" height="100" id="svg"/>
+}
+@if (Model.Computer == Choice.Scissors)
+{
+    <img src="~/scissors.svg" width="100" height="100" id="svg"/>
+}
+<div class="text-center">
+    <h1>@Model.Player x @Model.Computer</h1>
+    <p>počet kol: @Model.Round</p>
+    <p>počet vítězství: @Model.Wins</p>
+    <p>počet proher: @(Model.Round - Model.Wins)</p>
+    @if (Model.Round != 0) { 
+        <p>úspěšnost: @((100*Model.Wins) / Model.Round;)%</p>
+    }
+    @if (Model.Round == 0) {
+        <p>úspěšnost: 0%</p>
+    }
+
+</div>
 <div>
     <form method="post">
         <input type="hidden" asp-for="@Model.Round" value="@Model.Round" />

@@ -32,13 +32,14 @@ namespace RPS.Pages
         {
             Player = Choice.None;
             Computer = Choice.None;
-            Round = 1;
+            Round = 0;
             Wins = 0;
         }
 
         public void OnPost() {
             Computer = (Choice)_random.Next(1, 4);
             Round++;
+
             if(Player != Computer)
             {
                 if ((Player == Choice.Rock && Computer == Choice.Scissors) || (Player == Choice.Scissors && Computer == Choice.Paper) || (Player == Choice.Paper && Computer == Choice.Rock)) {
