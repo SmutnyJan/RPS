@@ -18,7 +18,13 @@ namespace RPS.Pages
         [BindProperty]
         public int Round { get; set; }
         [BindProperty]
-        public int Wins { get; set; }
+        public int Win { get; set; }
+        [BindProperty]
+        public int Draw { get; set; }
+        [BindProperty]
+        public int Lose { get; set; }
+
+
         private Random _random;
 
 
@@ -33,7 +39,9 @@ namespace RPS.Pages
             Player = Choice.None;
             Computer = Choice.None;
             Round = 0;
-            Wins = 0;
+            Win = 0;
+            Lose = 0;
+            Draw = 0;
         }
 
         public void OnPost() {
@@ -43,8 +51,16 @@ namespace RPS.Pages
             if(Player != Computer)
             {
                 if ((Player == Choice.Rock && Computer == Choice.Scissors) || (Player == Choice.Scissors && Computer == Choice.Paper) || (Player == Choice.Paper && Computer == Choice.Rock)) {
-                    Wins++;
+                    Win++;
                 }
+                else
+                {
+                    Lose++;
+                }
+            }
+            else
+            {
+                Draw++;
             }
         }
     }

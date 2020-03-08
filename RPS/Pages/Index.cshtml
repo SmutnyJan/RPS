@@ -33,12 +33,15 @@
 <div class="text-center">
     <h1>@Model.Player x @Model.Computer</h1>
     <p>počet kol: @Model.Round</p>
-    <p>počet vítězství: @Model.Wins</p>
-    <p>počet proher: @(Model.Round - Model.Wins)</p>
-    @if (Model.Round != 0) { 
-        <p>úspěšnost: @((100*Model.Wins) / Model.Round;)%</p>
+    <p>počet vítězství: @Model.Win</p>
+    <p>počet proher: @Model.Lose</p>
+    <p>počet remíz: @Model.Draw</p>
+    @if (Model.Round != 0)
+    {
+        <p>úspěšnost: @((100 * Model.Win) / Model.Round)%</p>
     }
-    @if (Model.Round == 0) {
+    @if (Model.Round == 0)
+    {
         <p>úspěšnost: 0%</p>
     }
 
@@ -46,7 +49,9 @@
 <div>
     <form method="post">
         <input type="hidden" asp-for="@Model.Round" value="@Model.Round" />
-        <input type="hidden" asp-for="@Model.Wins" value="@Model.Wins" />
+        <input type="hidden" asp-for="@Model.Win" value="@Model.Win" />
+        <input type="hidden" asp-for="@Model.Lose" value="@Model.Lose" />
+        <input type="hidden" asp-for="@Model.Draw" value="@Model.Draw" />
 
         <div class="form-check">
             <input class="form-check-input" type="radio" asp-for="@Model.Player" value="@Choice.Rock">
