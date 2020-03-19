@@ -35,7 +35,7 @@
     <p>počet kol: @Model.Round</p>
     <p>počet vítězství: @Model.Win</p>
     <p>počet proher: @Model.Lose</p>
-    <p>počet remíz: @Model.Draw</p>
+    <p>počet remíz @Model.Draw</p>
     @if (Model.Round != 0)
     {
         <p>úspěšnost: @((100 * Model.Win) / Model.Round)%</p>
